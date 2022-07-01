@@ -33,7 +33,7 @@ exports.SelectBill=(req,res)=>{
     BillModel.aggregate([
         {$match:{EmailAddress:email}},
         {$project:{
-                _id:1,FullName:1,Email:1, Phone:1,Amount:1,EmailAddress:EmailAddress
+                _id:1,FullName:1,Email:1, Phone:1,Amount:1,EmailAddress:1
                 
             }},
         {$group:{_id:"$EmailAddress",total:{$sum:"$Amount"}}}
