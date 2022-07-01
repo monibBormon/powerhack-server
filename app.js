@@ -44,9 +44,9 @@ mongoose.connect(URI,OPTION,(error)=>{
 app.use('/api',router)
 
 
-// undefined route 
-app.use('*',(req,res)=>{
-    res.status(404).json({status:"Fail",data:"Not Found"})
+// Undefined Route Implement
+app.use("*",(req,res)=>{
+    res.status(404).json({status:"fail",data:"Not Found"})
 })
 
 
