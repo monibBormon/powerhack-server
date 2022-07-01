@@ -36,7 +36,7 @@ exports.SelectBill=(req,res)=>{
                 _id:1,FullName:1,Email:1, Phone:1,Amount:1,EmailAddress:1
                 
             }},
-            {$addFields:{"total":{$add:Amount}}}
+            {$addFields:{"total":{$add:[Amount]}}}
         // {$group:{_id:0,total:{$sum:"$Amount"}}}
     ],(err,data)=>{
         if(err){
