@@ -43,7 +43,7 @@ exports.SelectBill=(req,res)=>{
         }else{
             res.status(200).json({status:"success",data:data})
         }
-    }).sort({_id:-1})
+    })
 }
 
 // Get Data  bY id
