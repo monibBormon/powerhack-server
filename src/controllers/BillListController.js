@@ -30,7 +30,14 @@ exports.CreateBill=(req,res)=>{
 // read data 
 exports.SelectBill=(req,res)=>{
     const email = req.headers['EmailAddress']
-    BillModel.find({EmailAddress:email},(err,data)=>{
+    BillModel.aggregate([
+        {$match:{EmailAddress:email}},
+        {$project:{
+                _id:1,FullName:1,Email:1, Phone:1,Amount:1,EmailAddress:EmailAddress
+                
+            }},
+        {$group:{_id:"$EmailAddress",total:{$sum:"$Amount"}}}
+    ],(err,data)=>{
         if(err){
             res.status(400).json({status:"Fail",data:err})
         }else{
