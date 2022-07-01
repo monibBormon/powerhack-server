@@ -36,7 +36,7 @@ exports.SelectBill=(req,res)=>{
                 _id:1,FullName:1,Email:1, Phone:1,Amount:1,EmailAddress:1
                 
             }},
-        {$group:{_id:"$EmailAddress",total:{$sum:"$Amount"}}}
+        {$group:{_id:0,total:{$sum:"$Amount"}}}
     ],(err,data)=>{
         if(err){
             res.status(400).json({status:"Fail",data:err})
