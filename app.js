@@ -33,9 +33,9 @@ app.use(limiter)
 // Mongodb 
 const URI ="mongodb+srv://<username>:<password>@cluster0.dejzn.mongodb.net/PowerHack?retryWrites=true&w=majority"
 const OPTION = {user:"powerhack",pass:"S84ZhmhLlgXQPixS",autoIndex:true}
-mongoose.connect(URI,OPTION,(err)=>{
+mongoose.connect(URI,OPTION,(error)=>{
     console.log("Mongo Connected");
-    console.log(err);
+    console.log(error);
 })
 
 
