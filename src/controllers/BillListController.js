@@ -29,14 +29,14 @@ exports.CreateBill=(req,res)=>{
 
 // read data 
 exports.SelectBill=(req,res)=>{
-    // const email = req.headers['EmailAddress']
-    BillModel.aggregate([{$facet:{"total":[{$sum:"Amount"}],"data":[]}}],(err,data)=>{
+    const email = req.headers['EmailAddress']
+    BillModel.find({EmailAddress:email},(err,data)=>{
         if(err){
             res.status(400).json({status:"Fail",data:err})
         }else{
             res.status(200).json({status:"success",data:data})
         }
-    })
+    }).sort({_id:-1})
 }
 
 // Get Data  bY id
