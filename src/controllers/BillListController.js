@@ -29,9 +29,9 @@ exports.CreateBill=(req,res)=>{
 
 // read data 
 exports.SelectBill=(req,res)=>{
-    const email = req.headers['EmailAddress']
+    // const email = req.headers['EmailAddress']
     BillModel.aggregate([
-        {$match:{EmailAddress:email}},
+        // {$match:{EmailAddress:email}},
         {$project:{
                 _id:1,FullName:1,Email:1, Phone:1,Amount:1,EmailAddress:1
                 
