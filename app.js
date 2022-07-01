@@ -1,33 +1,31 @@
-// Basic 
-const express = require('express')
-const router = require('./src/routes/api')
-const app = new express()
-const bodyParser = require('body-parser')
+// Basic Lib Import
+const express =require('express');
+const router =require('./src/routes/api');
+const app= new express();
+const bodyParser =require('body-parser');
 
+// Security Middleware Lib Import
+const rateLimit =require('express-rate-limit');
+const helmet =require('helmet');
+const mongoSanitize =require('express-mongo-sanitize');
+const xss =require('xss-clean');
+const hpp =require('hpp');
+const cors =require('cors');
 
-// security middleware 
-const rateLimit = require('express-rate-limit')
-const helmet = require('helmet')
-const mongoSanitize = require('express-mongo-sanitize')
-const Xss = require('xss-clean')
-const hpp = require('hpp')
-const cors = require('cors')
+// Database Lib Import
+const mongoose =require('mongoose');
 
-// database 
-const mongoose =require('mongoose')
-
-// middleware implement 
+// Security Middleware Implement
 app.use(cors())
 app.use(helmet())
 app.use(mongoSanitize())
-app.use(Xss())
+app.use(xss())
 app.use(hpp())
-
-// body parser implement 
+// Body Parser Implement
 app.use(bodyParser.json())
 
-// request rate limit 
-const limiter = rateLimit({windowMs:15*60*1000,max:3000})
+// Request Rate Limit
+const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 // Mongodb 
